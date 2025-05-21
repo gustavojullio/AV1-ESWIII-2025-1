@@ -9,7 +9,7 @@ let page;
 // Configuração compartilhada
 Given('que estou na página do contador', {timeout: 10000}, async () => {
   browser = await puppeteer.launch({ 
-    headless: false,
+    headless: true,
     args: ['--no-sandbox'],
     slowMo: 50 // Ajuda a visualizar
   });
