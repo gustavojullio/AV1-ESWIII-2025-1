@@ -1,0 +1,40 @@
+extends layout
+
+block content
+  h1 Contador de Cliques
+  
+  div.contador-container
+    h2#counter-value 0
+    button#increment-btn(type="button") Clique aqui
+    button#reset-btn(type="button") Zerar
+
+  script.
+    document.addEventListener('DOMContentLoaded', () => {
+      const counterValue = document.getElementById('counter-value');
+      const incrementBtn = document.getElementById('increment-btn');
+      const resetBtn = document.getElementById('reset-btn');
+      
+      // Inicializa com valor 0 (garantindo tipo number)
+      let count = parseInt(counterValue.textContent) || 0;
+
+      // Atualiza o valor exibido no contador
+      const updateCounter = () => {
+        counterValue.textContent = count.toString();
+      };
+
+      // Incrementa o contador (com verificação de tipo)
+      incrementBtn.addEventListener('click', () => {
+        count = parseInt(count) + 1;
+        updateCounter();
+      });
+
+      // Zera o contador (garantindo tipo number)
+      resetBtn.addEventListener('click', () => {
+        count = 0;
+        updateCounter();
+      });
+
+      // Debug: mostra no console quando houver interação
+      incrementBtn.addEventListener('click', () => console.log('Incrementado para:', count));
+      resetBtn.addEventListener('click', () => console.log('Contador zerado'));
+    });
